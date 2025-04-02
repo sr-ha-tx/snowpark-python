@@ -1,0 +1,20 @@
+[project]
+name = "snowpark-python"
+version = "0.1.0"
+description = "DataEngineering with Snowpark"
+authors = [
+    {name = "sr6",email = "you@example.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10,<3.12"
+dependencies = [
+    "snowflake-snowpark-python (==1.25.0)",
+    "snowflake-cli (>=3.5.0,<4.0.0)",
+    "openpyxl (>=3.1.5,<4.0.0)",
+    "pandas (>=2.2.3,<3.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

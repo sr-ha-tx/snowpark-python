@@ -1,0 +1,21 @@
+definition_version: 2
+
+mixins:
+  shared:
+    artifacts:
+      - dest: my_snowpark_project
+        src: orders_update_sp/
+    stage: dev_deployment
+
+entities:
+  orders_update_sp:
+    type: procedure
+    identifier:
+      schema: harmonized
+      name: orders_update_sp
+    handler: procedure.main
+    signature: "null"
+    returns: string
+    meta:
+      use_mixins:
+        - shared

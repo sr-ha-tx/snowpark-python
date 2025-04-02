@@ -1,0 +1,23 @@
+definition_version: 2
+
+mixins:
+  shared:
+    artifacts:
+      - dest: my_snowpark_project
+        src: "fahrenheit_to_celsius_udf/"
+    stage: dev_deployment
+
+entities:
+  fahrenheit_to_celsius_udf:
+    type: function
+    identifier: 
+      name: fahrenheit_to_celsius_udf
+      schema: analytics
+    handler: function.main
+    signature:
+      - name: "temp_f"
+        type: "float"
+    returns: float
+    meta:
+      use_mixins:
+        - shared

@@ -1,0 +1,21 @@
+definition_version: 2
+
+mixins:
+  shared:
+    artifacts:
+      - dest: my_snowpark_project
+        src: daily_city_metrics_update_sp/
+    stage: dev_deployment
+
+entities:
+  daily_city_metrics_update_sp:
+    type: procedure
+    identifier:
+      name: daily_city_metrics_update_sp
+      schema: analytics
+    signature: ""
+    handler: procedure.main
+    returns: string
+    meta:
+      use_mixins:
+        - shared

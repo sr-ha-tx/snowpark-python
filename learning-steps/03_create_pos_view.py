@@ -107,7 +107,7 @@ def test_pos_view(session):
 # For local debugging
 if __name__ == "__main__":
     # Create a local Snowpark session
-    with Session.builder.config('connection-name', 'HOL').getOrCreate() as session:
+    with Session.builder.config('connection_name', 'HOL').getOrCreate() as session:
         create_pos_view(session)
         create_pos_view_stream(session)
 #        test_pos_view(session)

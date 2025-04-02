@@ -1,0 +1,114 @@
+definition_version: '2'
+
+mixins:
+  snowpark_shared:
+    artifacts:
+      - dest: my_snowpark_project
+        src: app/
+    stage: dev_deployment
+
+entities:
+
+  load_excel_spreadsheet_to_table:
+    type: procedure
+    identifier:
+      name: load_excel_spreadsheet_to_table
+      schema: external
+    handler: procedures.load_excel_spreadsheet_to_table
+    signature:
+      - name: file_path
+        type: string
+      - name: worksheet_name
+        type: string
+      - name: table_name
+        type: string
+    returns: string
+    meta:
+      use_mixins:
+        - snowpark_shared
+
+  load_daily_city_metrics_sp:
+    type: procedure
+    identifier:
+      name: load_daily_city_metrics_sp
+      schema: external
+    handler: procedures.load_daily_city_metrics_sp
+    signature:
+      - name: schema_name
+        type: string
+      - name: table_name
+        type: string
+    returns: string
+    meta:
+      use_mixins:
+        - snowpark_shared
+
+  load_all_raw_tables:
+    type: procedure
+    identifier:
+      name: load_all_raw_tables
+      schema: external
+    handler: procedures.load_all_raw_tables
+    signature: "null"
+    returns: string
+    meta:
+      use_mixins:
+        - snowpark_shared
+
+  load_parquet_to_table:
+    type: procedure
+    identifier:
+      name: load_parquet_to_table
+      schema: external
+    handler: procedures.load_parquet_to_table
+    signature:
+      - name: s3dir
+        type: string
+      - name: tabname
+        type: string
+      - name: schema
+        type: string
+      - name: year
+        type: string
+    returns: string
+    meta:
+      use_mixins:
+        - snowpark_shared
+  
+  # hello_function:
+  #   type: function
+  #   identifier:
+  #     name: hello_function
+  #   handler: functions.hello_function
+  #   signature:
+  #     - name: name
+  #       type: string
+  #   returns: string
+  #   meta:
+  #     use_mixins:
+  #       - snowpark_shared
+
+  # hello_procedure:
+  #   type: procedure
+  #   identifier:
+  #     name: hello_procedure
+  #   handler: procedures.hello_procedure
+  #   signature:
+  #     - name: name
+  #       type: string
+  #   returns: string
+  #   meta:
+  #     use_mixins:
+  #       - snowpark_shared
+
+  # test_procedure:
+  #   type: procedure
+  #   identifier:
+  #     name: test_procedure
+  #   handler: procedures.test_procedure
+  #   signature: ''
+  #   returns: string
+  #   meta:
+  #     use_mixins:
+  #       - snowpark_shared
+
